@@ -1,10 +1,10 @@
 public class Card {
   public enum Suit {
-    Spades, Hearts, Diamonds, Clubs
+    SPADES, HEARTS, DIAMONDS, CLUBS
   }
 
   public enum Rank {
-    Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King
+    ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING
   }
 
   private final Rank face;
@@ -26,8 +26,13 @@ public class Card {
     return colour;
   }
 
+  private String formatEnum(Enum<?> e) {
+    String name = e.name().toLowerCase();
+    return name.substring(0, 1).toUpperCase() + name.substring(1);
+  } 
+
   @Override
   public String toString() {
-    return this.face + " of " + this.colour;
+    return formatEnum(face) + " of " + formatEnum(colour);
   }
 }
